@@ -10,28 +10,32 @@ $(document).ready(function() {
   $("#sc_link").attr("href", song);
 
   // Play button pressed
-  $("#play").click(function() {
-    player.play();
+  $("#play-pause").click(function() {
+    player.isPaused(function(pause){
+      if(pause){
+        $("#play-pause").html('<i class="fa fa-play" aria-hidden="true"></i>');
+        player.toggle();
+      }else{
+        $("#play-pause").html('<i class="fa fa-pause" aria-hidden="true"></i>');
+        player.toggle();
+      }
+    });
   });
 
-  // Pause button pressed
-  $("#pause").click(function() {
-    player.pause();
-  });
 
   // Spacebar is pressed, pause or play song
-  document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-      var player = SC.Widget("so");
-      player.isPaused(function(pause){
-        if(pause){
-          player.play();
-        }else{
-          player.pause();
-        }
-      });
-    }
-  }
+  // document.body.onkeyup = function(e){
+  //   if(e.keyCode == 32){
+  //     player.isPaused(function(pause){
+  //       if(pause){
+  //         $("#play-pause").html('<i class="fa fa-pause" aria-hidden="true"></i>');
+  //       }else{
+  //         $("#play-pause").html('<i class="fa fa-play" aria-hidden="true"></i>');
+  //       }
+  //     });
+  //     player.toggle();
+  //   }
+  // }
 
   // New SoundCloud URL requested via prompt()
   $("#newSong").click(function() {
