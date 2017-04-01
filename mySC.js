@@ -22,7 +22,6 @@ $(document).ready(function() {
     });
   });
 
-
   // Spacebar is pressed, pause or play song
   // document.body.onkeyup = function(e){
   //   if(e.keyCode == 32){
